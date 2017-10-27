@@ -27,8 +27,10 @@ MODE = args['mode']
 if __name__ == '__main__':
     # Loading input sequences, output sequences and the necessary mapping dictionaries
     print('[INFO] Loading data...')
+    # X, X_vocab_len, X_word_to_ix, X_ix_to_word, y, y_vocab_len, y_word_to_ix, y_ix_to_word = load_data(
+    #     'europarl-v8.fi-en.en', 'europarl-v8.fi-en.fi', MAX_LEN, VOCAB_SIZE)
     X, X_vocab_len, X_word_to_ix, X_ix_to_word, y, y_vocab_len, y_word_to_ix, y_ix_to_word = load_data(
-        'europarl-v8.fi-en.en', 'europarl-v8.fi-en.fi', MAX_LEN, VOCAB_SIZE)
+        'mock/1.txt', 'mock/2.txt', MAX_LEN, VOCAB_SIZE)
 
     # Finding the length of the longest sequence
     X_max_len = max([len(sentence) for sentence in X])
@@ -91,7 +93,7 @@ if __name__ == '__main__':
             predictions = np.argmax(model.predict(X_test), axis=2)
             sequences = []
             for prediction in predictions:
-                sequence = ' '.join([y_ix_to_word(index) for index in prediction if index > 0])
+                sequence = ' '.join([y_ix_to_word[index] for index in prediction if index > 0])
                 print(sequence)
                 sequences.append(sequence)
             np.savetxt('test_result', sequences, fmt='%s')
