@@ -1,62 +1,64 @@
-### Introduction:
+[[README doc for English Version]](README4English.md)
 
-This is my first attempt on a simple project to create a language translation model using Sequence To Sequence Learning Approach.
+### 简介：
 
-Details can be found at my blog post here:
+这是我在一个简单项目下使用seq2seq来学习方法来创建语言翻译模型的首次尝试。
 
-* [Creating A Language Translation Model Using Sequence To Sequence Learning Approach](https://chunml.github.io/ChunML.github.io/project/Sequence-To-Sequence/)
+你可以通过我的博客来了解更多详细内容：
 
-### Dataset:
+* [使用seq2seq方法来创建一个语言翻译模型](https://chunml.github.io/ChunML.github.io/project/Sequence-To-Sequence/)
 
-I used the Europarl's Parallel Corpus for training. To get the source code to work immediately, you have to use the newest version (release v8 at the time of writing) at the link below (following the link will start a 180MB download):
+### 数据集：
+
+我使用了Europarl的平行语料库进行训练。为了让源代码立即工作，您必须在下面的链接中使用最新版本(在撰写时发布v8)(以下链接将启动一个180 mb的下载)：
 
 * [Europarl v8](http://www.statmt.org/wmt15/europarl-v8.fi-en.tgz)
 
-Feel free to change the default dataset to anyone of your own. Just don't forget to modify the code!
+您可以自由地将默认数据集更改为您自己的任何人。只是不要忘记修改代码！
 
-### List of arguments:
+### 参数列表：
 
-* max_len: specify the maximum length of sentence to extract from text.  
-Default: 200
-* vocab_size: specify the number of the most frequent words to put in vocabulary set.  
-Default: 20000
-* batch_size: specify the batch size.  
-Default: 1000
-* layer_num: specify the number of recurrent layers in Decoder network.  
-Default: 3
-* hidden_dim: specify the dimension of hidden state.  
-Default: 1000
-* np_epoch: specify the number of training epochs.  
-Default: 20
-* mode: specify whether to train or test the model.  
-Default: train
+* max_len: 指定从文本中提取的句子的最大长度。
+  默认值：200
+* vocab_size: 指定词汇表中最常使用的单词的数量。
+  默认值：20000
+* batch_size: 指定批大小。
+  默认值：1000
+* layer_num: 指定解码器网络中重复的层数。
+  默认值：3
+* hidden_dim: 指定隐藏状态的维数。
+  默认值：1000
+* np_epoch: 指定培训的数量。
+  默认值：20
+* mode: 指定是否对模型进行培训或测试。
+  默认值：train
 
-### Train the model:
+### 训练模型：
 
-* With default settings:
+* 基于默认配置：
 
 ```python
 python seq2seq.py
 ```
 
-* With user-defined settings:
+* 基于用户自定义的配置：
 
 ```python
 # Max length:= 300, number of recurrent layers:= 2, dimension of hidden state:= 500
 python seq2seq.py -max_len 300 -layer_num 2 -hidden_dim 500
 ```
 
-### Test the model:
+### 测试模型：
 
-The network must be trained at least once (trained weights must exist!).
+网络必须要至少训练一次（训练权重必须存在！）
 
-* If the network was trained with default settings:
+* 如果网路是基于配置训练的：
 
 ```python
 python seq2seq.py -mode test
 ```
 
-* If the network was trained with user-defined settings:
+* 如果网络时基于用户自定义配置训练的：
 
 ```python
 # Max length:= 300, number of recurrent layers:= 2, dimension of hidden state:= 500

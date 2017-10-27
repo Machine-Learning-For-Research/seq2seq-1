@@ -87,3 +87,8 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+.idea
+
+europarl-v8.fi-en.en
+europarl-v8.fi-en.fi
